@@ -3,7 +3,7 @@
 We (QStruggler) want to find the first excited state of a LiH molecule.
 There are two excited states (2-1Sigma+, 1-3Sigma+) very near the ground state.
 Reference: https://aip.scitation.org/doi/10.1063/1.1677704
-We will try to differentiate these two states using `qiskit` and `qumay`.
+We will try to differentiate these two states using `qiskit` and `qamuy`.
 
 ## original calculations from the reference
 
@@ -16,7 +16,7 @@ $2{\text -}{}^1\Sigma^+=-7.8998$ ,  $\Delta E_2=2{\text -}{}^1\Sigma^+ - 1{\text
 
 ## calculations with qamuy
 
-We try to caculate the excited states of LiH with `qumay`. We can only calculate two excited states. When the parameter `num_excited_states` is 3 or above, we get nothing.
+We try to caculate the excited states of LiH with `qamuy`. We can only calculate two excited states. When the parameter `num_excited_states` is 3 or above, we get nothing.
 
 For the final results, we get:
 - ground state energy: -7.979410371934547
