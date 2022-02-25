@@ -1,26 +1,35 @@
 # QHack2022 Project: LiH Excited States
 
-We (QStruggler) want to find the first excited state of a LiH molecule.
-There are two excited states (2-1Sigma+, 1-3Sigma+) very near the ground state.
-Reference: https://aip.scitation.org/doi/10.1063/1.1677704
-We will try to differentiate these two states using `qiskit` and `qamuy`.
+We (QStruggler) want to find the corresponding energies of the ground state and the first excited state of a LiH molecule.
+The energy of the second excited state is also what we want to check.
+We will try to find these energies using `qiskit` and `qamuy`.
 
-## original calculations from the reference
+## Calculations with qiskit
+[`LiH_excited-final.ipynb`](qiskit/LiH_excited-final.ipynb)
 
-We take https://aip.scitation.org/doi/10.1063/1.1677704 as reference and find out the three lowest energies as the ground state energy, 1st excited state energy, and 2nd excited state energy of LiH.
-The energies and corresponding states are listed below:
-$1{\text -}{}^1\Sigma^+=-8.0160$
-$1{\text -}{}^3\Sigma^+=-7.9152$ ,  $\Delta E_1=1{\text -}{}^3\Sigma^+ - 1{\text -}{}^1\Sigma^+=0.1008$
-$2{\text -}{}^1\Sigma^+=-7.8998$ ,  $\Delta E_2=2{\text -}{}^1\Sigma^+ - 1{\text -}{}^1\Sigma^+=0.1162$
+### qiskit numpy eigensolver
 
+- ground state energy: -7.881146
+- 1st excited state energy: -7.765750, Delta E_1: 0.115396
+- 2nd excited state energy: -7.748064, Delta E_2: 0.133083
 
-## calculations with qamuy
+### qiskit QEOM solution is not good
+
+- ground state energy: -7.881101
+- 1st excited state energy: -7.702501, Delta E_1: 0.178600
+- 2nd excited state energy: -7.612108, Delta E_2: 0.268993
+
+### qiskit runtime failed on both `ibmq_qasm_simulator` and `ibm_perth`
+Please check [`LiH_excited-runtime-sim.ipynb`](qiskit/LiH_excited-runtime-sim.ipynb) and [`LiH_excited-runtime.ipynb`](qiskit/LiH_excited-runtime.ipynb)
+
+## Calculations with qamuy
+[`LiH_excitedstate.ipynb`](qamuy/LiH_excitedstate.ipynb)
 
 We try to caculate the excited states of LiH with `qamuy`. We can only calculate two excited states. When the parameter `num_excited_states` is 3 or above, we get nothing.
 
 For the final results, we get:
-- ground state energy: -7.979410371934547
-- 1st excited state energy: -7.829952097591878, $\Delta E_1=0.149458274342669$
-- 2nd excited state energy: -7.305933835615826, $\Delta E_2=0.673476536318721$
+- ground state energy: -7.979410
+- 1st excited state energy: -7.829952, Delta E_1: 0.149458
+- 2nd excited state energy: -7.305933, Delta E_2: 0.673476
 
-Comparing the results with the reference, we find out that our results have obvious differences with those from the reference, especially for the 2nd excited state.
+Comparing the results with the [reference](https://doi.org/10.1063/1.1677704), we find out that our results have obvious differences with those from the reference, especially for the 2nd excited state.
